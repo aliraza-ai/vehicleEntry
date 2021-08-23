@@ -1,0 +1,71 @@
+.coverbg
+{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("img/bg-header-11.jpg");
+}
+#anpr
+{
+    font-size: 19px;
+    font-weight: 800;
+    height: 60px;
+    width: 190px;
+}
+
+#center-cover-content
+{
+    text-align: center;
+    margin-bottom: 80px;
+    margin-top: 13%;
+    color: white;
+    margin-bottom: 250px;;
+}
+#titleCover
+{
+    font-size: 38px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.intro
+{
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+.btnLogin
+{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px;
+    width: 230px;
+
+}
+
+.myNav
+{
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+.nav li
+{
+    margin: 20px;
+}
+#converBtnNav
+{
+    border: none;
+    background: none;
+}
+#converBtnNav span
+{
+    width: 30px;
+    height: 5px;
+}

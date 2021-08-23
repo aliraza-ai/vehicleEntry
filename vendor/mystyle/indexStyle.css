@@ -1,0 +1,100 @@
+.coverbg
+{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("../resources/images/bg-header-1.jpg");
+}
+#anpr
+{
+    font-size: 19px;
+    font-weight: 800;
+    height: 60px;
+    width: 190px;
+}
+@media (max-width: 767px)
+#center-cover-content {
+    height: 420px;
+}
+#center-cover-content
+{
+    text-align: center;
+    margin-bottom: 80px;
+    margin-top: 13%;
+    color: white;
+    margin-bottom: 250px;;
+}
+#titleCover
+{
+    font-size: 38px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.intro
+{
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+.btnLogin
+{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px;
+    width: 230px;
+    
+}
+
+.myNav
+{
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+.nav li
+{
+    margin: 25px;
+}
+.btnNavBar
+{
+    font-size: 15px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+.btnNavBar:hover
+{
+    text-decoration: none;
+    color: #269abc;
+}
+.login12
+{
+    border:1px #ffffff solid;
+    font-weight: 700;
+    color:white;
+    border-radius: 2px;
+    padding: 8px;
+    width: 120px;
+    height: 60px;
+}
+.login12:hover
+{
+    background-color: #497cb1;
+    color:white;
+}
+#converBtnNav 
+{
+    border: none;
+    background: none;
+}
+#converBtnNav span
+{
+    width: 30px;
+    height: 5px;
+}
