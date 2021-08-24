@@ -137,7 +137,7 @@ if ($_GET['date']==NULL ) {
     ?>
         <tr class="my">
             <td style="padding-left: 5px; min-width: 70px;"><?php $exdate=date_create($stm['InDate']);  echo date_format($exdate,"d-m-Y"); ?></td>
-            <td><?php echo $e->getVehicleTypeById($stm['vehicle']); ?></td>
+            <td><?php echo $e->getVehicleTypeById($stm['vehicle'])  ; ?></td>
             <td><?php echo $e->getDriverById($stm['driver']); ?></td>
             <td><?php echo $e->getVendorById($stm['vendor']); ?></td>
             <td><?php echo $e->getVendorById($stm['refcompany']); ?></td>
