@@ -135,6 +135,13 @@ VALUES('$today','$driver','$vendor','$refcompany','$vehicle','$inDate','$inTime'
         $res=$result->fetch_assoc();
         return $res['driver_name'];
     }
+    function getVehicleTypeById($id)
+    {
+        $query="select * from vehicle where id='$id'";
+        $result=$this->db->select($query);
+        $res=$result->fetch_assoc();
+        return $res['type'];
+    }
     function getVendorById($id)
     {
         $query="select * from vendor where id='$id'";
@@ -373,11 +380,7 @@ VALUES('$today','$driver','$vendor','$refcompany','$vehicle','$inDate','$inTime'
     function personalReport($parameter,$startDate,$endDate)
     {
 
-            $query="SELECT job.*, tb_driver.driver_name,vendor.name,vehicle.plateNo,vehicle.type
-FROM job
-INNER JOIN tb_driver ON job.driver=tb_driver.driver_id
-INNER JOIN vendor ON job.vendor=vendor.id
-INNER JOIN vehicle ON job.vehicle=vehicle.id where InDate>='$startDate' && InDate<='$endDate';";
+            $query="SELECT * from job where date>='$startDate' && date<='$endDate';";
             $RE=$this->db->select($query);
             return $RE;
 

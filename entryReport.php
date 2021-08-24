@@ -7,8 +7,7 @@ if(isset($_POST['mReport']))
 {
     $sDate=$_POST['startDate'];
     $eDate=$_POST['endDate'];
-    $p=$_POST['parameter'];
-    echo "<script>location.replace('overallReport.php?date=$sDate&eDate=$eDate&p=$p');</script>";
+    echo "<script>location.replace('overallReport.php?date=$sDate&eDate=$eDate');</script>";
 }
 
 ?>
