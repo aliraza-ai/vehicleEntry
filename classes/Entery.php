@@ -389,11 +389,18 @@ VALUES('$today','$driver','$vendor','$refcompany','$vehicle','$inDate','$inTime'
     function getVendorReport($parameter,$startDate,$endDate)
     {
 
-        $query="SELECT job.*, tb_driver.driver_name,vendor.name,vehicle.plateNo,vehicle.type
-FROM job
-INNER JOIN tb_driver ON job.driver=tb_driver.driver_id
-INNER JOIN vendor ON job.vendor=vendor.id
-INNER JOIN vehicle ON job.vehicle=vehicle.id where InDate>='$startDate' && InDate<='$endDate' && vendor='$parameter';";
+
+         $query="SELECT * from job where date>='$startDate' && date<='$endDate' && vendor='$parameter' ";
+         $RE=$this->db->select($query);
+         return $RE;
+
+    }
+
+    function getRefVendor($parameter,$startDate,$endDate)
+    {
+
+
+        $query="SELECT * from job where date>='$startDate' && date<='$endDate' && vendor='$parameter' ";
         $RE=$this->db->select($query);
         return $RE;
 

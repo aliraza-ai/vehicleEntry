@@ -9,7 +9,8 @@ if(isset($_POST['mReport']))
     $sDate=$_POST['startDate'];
     $eDate=$_POST['endDate'];
     $p=$_POST['vendor'];
-    echo "<script>location.replace('printVendorReport.php?date=$sDate&eDate=$eDate&p=$p');</script>";
+    $q=$_POST['vendort'];
+    echo "<script>location.replace('printVendorReport.php?date=$sDate&eDate=$eDate&p=$p&q=$q');</script>";
 }
 
 ?>
@@ -32,7 +33,7 @@ if(isset($_POST['mReport']))
                                  <span style="color:red; font-size:16px;">
                                   </span>
                                         <div class="row">
-                                            <div class="form-group col-lg-4">
+                                            <div class="form-group col-lg-3">
                                                 <label>Choose Vendor:</label>
                                                 <select required class="form-control select2" name="vendor">
                                                     <option value="">Choose</option>
@@ -54,11 +55,18 @@ if(isset($_POST['mReport']))
 
                                                 </select>
                                             </div>
-                                        <div class="form-group col-lg-4">
+                                            <div class="form-group col-lg-3">
+                                                <label>Choose:</label>
+                                                <select required class="form-control select2" name="vendort">
+                                                    <option value="1">Vendor</option>
+                                                    <option value="2">Ref. Company</option>
+                                                </select>
+                                            </div>
+                                        <div class="form-group col-lg-3">
                                             <label>Start Date:</label>
                                             <input class="form-control" required type="date" name="startDate" />
                                         </div>
-                                        <div class="form-group col-lg-4">
+                                        <div class="form-group col-lg-3">
                                             <label>End Date:</label>
                                             <input class="form-control" required type="date" name="endDate" />
                                         </div>

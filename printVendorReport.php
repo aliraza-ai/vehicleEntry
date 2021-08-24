@@ -96,6 +96,7 @@ if ($_GET['date']==NULL ) {
     $date=$_GET['date'];
     $eDate=$_GET['eDate'];
     $parameter=$_GET['p'];
+    $q=$_GET['q'];
     ?>
     <h3><?php
         $e=new Entery();
@@ -104,48 +105,53 @@ if ($_GET['date']==NULL ) {
         ?></h3>
 <p><?php if($eDate==null){ $ydate=date_create($date); $xdate=date_format($ydate,"m/d/y"); echo "Starting From: $xdate <br>To: $xdate";}else { $ydate=date_create($date); $xdate=date_format($ydate,"m/d/y"); $idate=date_create($eDate); $uDate=date_format($idate,"m/d/y"); echo "From:&nbsp; $xdate <br> To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$uDate";}  ?> </p>
 </div>
+
 <table width="100%">
     <tr class="c">
         <th style="padding-left: 5px;">Date</th>
         <th>Vehicle Type</th>
         <th>Driver</th>
+        <th>Ref. Company</th>
         <th>Start Time</th>
-        <th>End Date</th>
         <th>End Time</th>
         <th>PU Location</th>
         <th>DO Location</th>
         <th>Hours</th>
         <th>Extra Hours</th>
         <th>Guest Name</th>
-        <th>Debit</th>
-        <th>Credit</th>
+        <th>Job Price</th>
+        <th>Give Price</th>
         <th>Cash</th>
+        <th>Remarks</th>
     </tr>
 
     <?php
     $totald=0;
     $totalc=0;
+    $totale=0;
     $totalcash=0;
     $e=new Entery();
+    if($q==2)
+        $s=$e->getRefVendor($parameter,$date,$eDate);
     $s=$e->getVendorReport($parameter,$date,$eDate);
     if($s)
     {
     while ( $stm=$s->fetch_assoc())
     {
     $totalcash=$totalcash+$stm['cash'];
-
+    $totalc=$totalc+$stm['expenseprice'];
+    $totald=$totald+$stm['jobprice'];
 
     ?>
     <tr class="my">
         <td style="padding-left: 5px; min-width: 70px;"><?php $exdate=date_create($stm['InDate']);  echo date_format($exdate,"d-m-Y"); ?></td>
-        <td><?php echo $stm['type']; ?></td>
-        <td><?php echo $stm['driver_name']; ?></td>
-
+        <td><?php echo $e->getVehicleTypeById($stm['vehicle'])  ; ?></td>
+        <td><?php echo $e->getDriverById($stm['driver']); ?></td>
+        <td><?php echo $e->getVendorById($stm['refcompany']); ?></td>
         <td><?php
             $date=date_create($stm['InTime']);
             echo   date_format($date,"h:i:s A");
             ?></td>
-        <td><?php echo $stm['OutDate']; ?></td>
         <td><?php
             $date=date_create($stm['OutTime']);
             echo   date_format($date,"h:i:s A");
@@ -155,27 +161,10 @@ if ($_GET['date']==NULL ) {
         <td><?php echo $stm['totalhours']; ?></td>
         <td><?php echo $stm['extraHours']; ?></td>
         <td><?php echo $stm['customer']; ?></td>
-        <?php
-        if($stm['jobType']==1)
-        {
-            $totald=$totald+$stm['jobprice'];
-            ?>
-            <td><?php echo $stm['jobprice']; ?></td>
-            <td></td>
-            <?php
-        }
-        ?>
-        <?php
-        if($stm['jobType']==2)
-        {
-            $totalc=$totalc+$stm['jobprice'];
-            ?>
-            <td></td>
-            <td><?php echo $stm['jobprice']; ?></td>
-            <?php
-        }
-        ?>
+        <td><?php echo $stm['jobprice']; ?></td>
+        <td><?php echo $stm['expenseprice']; ?></td>
         <td><?php echo $stm['cash']; ?></td>
+        <td><?php echo $stm['remarks']; ?></td>
     </tr>
     <tr>
         <?php
@@ -206,7 +195,11 @@ if ($_GET['date']==NULL ) {
         <th colspan="1">Total:<?php echo $totald; ?></th>
         <th colspan="1">Total:<?php echo $totalc; ?></th>
         <th colspan="1">Total:<?php echo $totalcash; ?></th>
+        <th colspan="1"></th>
     </tr>
+
+
+
 
 
 </table>
