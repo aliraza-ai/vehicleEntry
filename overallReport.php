@@ -112,8 +112,8 @@ if ($_GET['date']==NULL ) {
         <th>Hours</th>
         <th>Extra Hours</th>
         <th>Guest Name</th>
+        <th>Cost</th>
         <th>Job Price</th>
-        <th>Give Price</th>
         <th>Cash</th>
         <th>Remarks</th>
     </tr>

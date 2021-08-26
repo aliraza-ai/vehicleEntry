@@ -2,9 +2,9 @@
 include_once ('classes/Entery.php');
 include 'lib/session.php';
 Session::CheckSession();
-if ($_GET['date']==NULL ) {
-  //  echo "<script>window.location='entryReport.php'</script>";
-}
+//if ($_GET['date']==NULL ) {
+//  //  echo "<script>window.location='entryReport.php'</script>";
+//}
 ?>
 
 <!DOCTYPE html>
@@ -84,33 +84,63 @@ if ($_GET['date']==NULL ) {
         {
             margin-top: 9%;
         }
+
+        p{
+            margin: 0px;
+            font-size: 14px;
+
+        }
     </style>
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div style="">
     <input id="printpagebutton" type="button" value="Print Report"  onclick="printpage()"/>
-<h3>Statement</h3>
-    <br>
-    <?php
-    $date=$_GET['date'];
-    $eDate=$_GET['eDate'];
-    $parameter=$_GET['p'];
-    $q=$_GET['q'];
-    ?>
-    <h3><?php
-        $e=new Entery();
-        echo $e->getVendorById($parameter);
 
-        ?></h3>
-<p><?php if($eDate==null){ $ydate=date_create($date); $xdate=date_format($ydate,"m/d/y"); echo "Starting From: $xdate <br>To: $xdate";}else { $ydate=date_create($date); $xdate=date_format($ydate,"m/d/y"); $idate=date_create($eDate); $uDate=date_format($idate,"m/d/y"); echo "From:&nbsp; $xdate <br> To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$uDate";}  ?> </p>
+<!--    --><?php
+//    $date=$_GET['date'];
+//    $eDate=$_GET['eDate'];
+//    $parameter=$_GET['p'];
+//    $q=$_GET['q'];
+//    ?>
+    <h3></h3>
+<p><?php // if($eDate==null){ $ydate=date_create($date); $xdate=date_format($ydate,"m/d/y"); echo "Starting From: $xdate <br>To: $xdate";}else { $ydate=date_create($date); $xdate=date_format($ydate,"m/d/y"); $idate=date_create($eDate); $uDate=date_format($idate,"m/d/y"); echo "From:&nbsp; $xdate <br> To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$uDate";}  ?> </p>
 </div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <img src="img/logo.png" width="100" height="100">
+        </div>
+        <div class="col-6 text-right">
+            <p>Invoice</p>
+            <p><b style="font-size: 15px;">Royal Smart Limousine LLC</b></p>
+            <p>Dubai, UAE</p>
+            <p>zafar.royal1980@gmail.com</p>
+        </div>
+    </div>
+
+
+    <div class="row" style="background-color: ">
+        <div class="col-6">
+
+        </div>
+        <div class="col-6 text-right">
+
+        </div>
+    </div>
+
+</div>
+
+
 
 <table width="100%">
     <tr class="c">
         <th style="padding-left: 5px;">Date</th>
         <th>Vehicle Type</th>
         <th>Driver</th>
+        <th>Ref. Company</th>
         <th>Start Time</th>
         <th>End Time</th>
         <th>PU Location</th>
@@ -118,73 +148,13 @@ if ($_GET['date']==NULL ) {
         <th>Hours</th>
         <th>Extra Hours</th>
         <th>Guest Name</th>
-        <th>Cost</th>
+        <th>Job Price</th>
+        <th>Give Price</th>
         <th>Cash</th>
         <th>Remarks</th>
     </tr>
 
-    <?php
-    $totald=0;
-    $totalc=0;
-    $totale=0;
-    $totalcash=0;
-    $e=new Entery();
-    if($q==2)
-        {
-
-
-        $s=$e->getRefVendor($parameter,$date,$eDate);
-
-           }
-
-    else
-    $s=$e->getVendorReport($parameter,$date,$eDate);
-    if($s)
-    {
-    while ( $stm=$s->fetch_assoc())
-    {
-    $totalcash=$totalcash+$stm['cash'];
-    $totald=$totald+$stm['expenseprice'];
-    $totalc=$totalc+$stm['jobprice'];
-
-
-    ?>
-    <tr class="my">
-        <td style="padding-left: 5px; min-width: 70px;"><?php $exdate=date_create($stm['InDate']);  echo date_format($exdate,"d-m-Y"); ?></td>
-        <td><?php echo $e->getVehicleTypeById($stm['vehicle'])  ; ?></td>
-        <td><?php echo $e->getDriverById($stm['driver']); ?></td>
-        <td><?php
-            $date=date_create($stm['InTime']);
-            echo   date_format($date,"h:i:s A");
-            ?></td>
-        <td><?php
-            $date=date_create($stm['OutTime']);
-            echo   date_format($date,"h:i:s A");
-            ?></td>
-        <td><?php echo $stm['pulocation']; ?></td>
-        <td><?php echo $stm['dolocation']; ?></td>
-        <td><?php echo $stm['totalhours']; ?></td>
-        <td><?php echo $stm['extraHours']; ?></td>
-        <td><?php echo $stm['customer']; ?></td>
-        <?php if($q==1)
-        { ?>
-        <td><?php echo $stm['expenseprice']; ?></td>
-        <?php
-
-        }else{  ?>
-        <td><?php echo $stm['jobprice']; ?></td>
-        <?php
-        }
-        ?>
-        <td><?php echo $stm['cash']; ?></td>
-        <td><?php echo $stm['remarks']; ?></td>
-    </tr>
-    <tr>
-        <?php
-
-        }
-        }
-        ?>
+ <tr>
         <td></td>
         <td></td>
         <td></td>
@@ -204,19 +174,7 @@ if ($_GET['date']==NULL ) {
     </tr>
 
     <tr class="end">
-        <th colspan="10"></th>
-        <?php if($q==1)
-        { ?>
-        <th colspan="1">Total:<?php echo $totald; ?></th>
-            <?php
 
-        }else{  ?>
-        <th colspan="1">Total:<?php echo $totalc; ?></th>
-            <?php
-        }
-        ?>
-        <th colspan="1">Total:<?php echo $totalcash; ?></th>
-        <th colspan="1"></th>
     </tr>
 
 

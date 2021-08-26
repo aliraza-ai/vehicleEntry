@@ -29,13 +29,13 @@ class Entery
             if($ref)
             {
                 $reff = $ref->fetch_assoc();
-                $bb = $reff['openBalance'] + $expenseprice;
-                $select1 = "INSERT INTO `vendorbalance`(`entryDate`,`date`, `vendor`, `detail`, `amount`, `openBalance`,`status`,`time`) VALUES ('$today','$inDate','$refcompany','Trip','$expenseprice','$bb','2','$inTime')";
+                $bb = $reff['openBalance'] + $jobprice;
+                $select1 = "INSERT INTO `vendorbalance`(`entryDate`,`date`, `vendor`, `detail`, `amount`, `openBalance`,`status`,`time`) VALUES ('$today','$inDate','$refcompany','Trip','$jobprice','$bb','2','$inTime')";
                 $result1 = $this->db->insert($select1);
             }else
             {
-                $bb = 0 + $expenseprice;
-                $select1 = "INSERT INTO `vendorbalance`(`entryDate`,`date`, `vendor`, `detail`, `amount`, `openBalance`,`status`,`time`) VALUES ('$today','$inDate','$refcompany','Trip','$expenseprice','$bb','2','$inTime')";
+                $bb = 0 + $jobprice;
+                $select1 = "INSERT INTO `vendorbalance`(`entryDate`,`date`, `vendor`, `detail`, `amount`, `openBalance`,`status`,`time`) VALUES ('$today','$inDate','$refcompany','Trip','$jobprice','$bb','2','$inTime')";
                 $result1 = $this->db->insert($select1);
             }
 
@@ -400,7 +400,7 @@ VALUES('$today','$driver','$vendor','$refcompany','$vehicle','$inDate','$inTime'
     {
 
 
-        $query="SELECT * from job where date>='$startDate' && date<='$endDate' && vendor='$parameter' ";
+        $query="SELECT * from job where date>='$startDate' && date<='$endDate' && refcompany='$parameter' ";
         $RE=$this->db->select($query);
         return $RE;
 

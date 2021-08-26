@@ -17,7 +17,7 @@ if(isset($_POST['mReport']))
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Print Vendor Report</h2>
+                    <h2 class="page-header">Generate Invoice</h2>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -26,7 +26,7 @@ if(isset($_POST['mReport']))
                  <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <b>Job Vendor Report</b>
+                            <b>Invoice</b>
                         </div>
                         <div class="panel-body">
                             <form role="form" class="col-lg-12" method="post" action="">
@@ -34,7 +34,7 @@ if(isset($_POST['mReport']))
                                   </span>
                                         <div class="row">
                                             <div class="form-group col-lg-3">
-                                                <label>Choose Company:</label>
+                                                <label>Choose Vendor:</label>
                                                 <select required class="form-control select2" name="vendor">
                                                     <option value="">Choose</option>
                                                     <?php
@@ -56,7 +56,7 @@ if(isset($_POST['mReport']))
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-3">
-                                                <label>Choose Reference:</label>
+                                                <label>Choose:</label>
                                                 <select required class="form-control select2" name="vendort">
                                                     <option value="1">Vendor</option>
                                                     <option value="2">Ref. Company</option>

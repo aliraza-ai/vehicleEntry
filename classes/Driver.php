@@ -289,11 +289,8 @@ class Driver
 
 
     //for expense
-    function insertExpense($date,$vehicle,$driver,$expenseDetail,$amount)
+    function insertExpense($date,$vendor,$vehicle,$driver,$expenseDetail,$amount)
     {
-        $res=$this->db->select("select * from vehicle where id='$vehicle'");
-        $vendors=$res->fetch_assoc();
-        $vendor=$vendors['vendor'];
 
         $q="INSERT INTO `expense`(`date`, `expense`, `vehicle`, `driver`, `amount`, `vendor`) 
         VALUES ('$date','$expenseDetail','$vehicle','$driver','$amount','$vendor')";
@@ -376,8 +373,6 @@ class Driver
         $query="DELETE FROM vendorbalance where id='$id'";
         $result=$this->db->delete($query);
 
-
-
         if($result)
         {
             $query="SELECT * FROM vendorbalance where vendor > '$id'";
@@ -403,8 +398,46 @@ class Driver
 
                 }
             }
-
         }
+    }
+
+
+    public function addNotes($title,$notes)
+    {
+        $notes=$this->db->link->real_escape_string($notes);
+        $res=$this->db->insert("INSERT INTO notes(title,notes) VALUE('$title','$notes')");
+        if($res)
+            return "Notes Inserted";
+        else
+            return "Notes Not Inserted";
+    }
+    public function updateNotes($title,$notes,$id)
+    {
+        $notes=$this->db->link->real_escape_string($notes);
+        $res=$this->db->update("update notes set title='$title',notes='$notes'");
+        if($res)
+            return "Notes Updates";
+        else
+            return "Notes Not Updates";
+    }
+    public function getAllNotes()
+    {
+        $query="select *from notes";
+        $result=$this->db->select($query);
+        return $result;
+    }
+
+    public function getNotesById($id)
+    {
+        $query="select *from notes where id='$id'";
+        $result=$this->db->select($query);
+        return $result;
+    }
+
+    public function deleteNotes($id)
+    {
+        $query = "delete From notes where id='$id'";
+        $result = $this->db->delete($query);
     }
 
 

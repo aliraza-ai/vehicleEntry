@@ -9,12 +9,13 @@ if (isset($_POST['addBus']))
 {
 
     $date=$_POST['date'];
+    $vendor=$_POST['vendor'];
     $vehicle=$_POST['vehicle'];
     $driver=$_POST['driver'];
     $expenseDetail=$_POST['expenseDetail'];
     $amount=$_POST['amount'];
 
-    $busCheck=$d->insertExpense($date,$vehicle,$driver,$expenseDetail,$amount);
+    $busCheck=$d->insertExpense($date,$vendor,$vehicle,$driver,$expenseDetail,$amount);
 
 
 }
@@ -47,6 +48,29 @@ if (isset($_POST['addBus']))
                                 <div class="form-group">
                                     <label>Date:</label>
                                     <input class="form-control" type="date" autocomplete="off" required name="date" placeholder="Vehicle Plate" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Vendor:</label>
+                                    <select class="form-control select2" name="vendor" required>
+                                        <option value="">Choose</option>
+                                        <?php
+
+                                        $myVandor1=$d->getAllVender();
+
+                                        if($myVandor1)
+                                        {
+
+                                            while ($getsVonder1=$myVandor1->fetch_assoc())
+                                            {
+
+
+                                                ?>
+                                                <option value="<?php echo $getsVonder1['id']; ?>"><?php echo $getsVonder1['name']; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                         <div class="form-group">
                                             <label>Vehicle:</label>

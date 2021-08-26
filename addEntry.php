@@ -113,7 +113,7 @@ $today=date("d-m-Y");
                                             <input class="form-control" required name="pulocation" placeholder="PU Location" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Job Price</label>
+                                            <label>Cost</label>
                                             <input class="form-control" type="number" value="0"  autocomplete="off" name="jobprice" required  placeholder="Job Price" />
                                         </div>
                                     <div class="form-group">
@@ -190,7 +190,7 @@ $today=date("d-m-Y");
                                         <input class="form-control"  required name="dolocation" placeholder="Do Location" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Given Price</label>
+                                        <label>Job Price</label>
                                         <input class="form-control" type="number" value="0"  autocomplete="off" name="expenseprice" required  placeholder="Expense Price" />
                                     </div>
                                     <div class="form-group">

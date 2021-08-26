@@ -127,6 +127,7 @@ if ($_GET['date']==NULL ) {
                     $balance=$stm['openBalance'];
 
 
+
     ?>
         <tr class="my">
             <td style="padding-left: 5px; min-width: 70px;"><?php echo $stm['id']; ?></td>
@@ -136,7 +137,7 @@ if ($_GET['date']==NULL ) {
             <?php
             if($stm['status']==1)
             {
-                $totald=+$stm['amount'];
+                $totald=$totald+$stm['amount'];
             ?>
             <td style="min-width: 100px;"><?php echo $stm['amount']; ?></td>
             <?php
@@ -156,7 +157,7 @@ if ($_GET['date']==NULL ) {
                 <?php
             }else
             {
-                $totalc=+$stm['amount'];
+                $totalc=$totalc+$stm['amount'];
                 ?>
                 <td style="min-width: 100px;color:red;"><?php echo $stm['amount']; ?></td>
                 <?php
@@ -195,7 +196,7 @@ if ($_GET['date']==NULL ) {
     </tr>
 
     <tr class="end">
-        <th colspan="3"></th>
+        <th colspan="4"></th>
         <th colspan="1">Total:<?php echo $totald; ?></th>
         <th colspan="1">Total:<?php echo $totalc; ?></th>
         <th colspan="1">Balance:<?php echo $balance; ?></th>
